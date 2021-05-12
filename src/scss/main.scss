@@ -1,0 +1,219 @@
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  background: #fff;
+  color: #666;
+}
+
+::selection {
+  background: #39f;
+  color: #fff;
+  text-shadow: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: rgb(20, 21, 25);
+}
+
+$header-color: rgb(50, 60, 68);
+
+header {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, max-content) auto max-content;
+  grid-column-gap: 12px;
+  align-items: center;
+  background: $header-color;
+  color: rgb(236, 235, 235);
+
+  .file-loader {
+    align-self: stretch;
+    margin-left: -8px;
+    margin-bottom: -8px;
+    margin-top: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(55, 209, 235);
+    background: linear-gradient(
+      135deg,
+      rgba(55, 209, 235, 1) 0%,
+      rgba(28, 174, 216, 1) 100%
+    );
+    color: #fff;
+    padding: 0 12px;
+    cursor: pointer;
+
+    svg {
+      display: inline-block;
+      font-size: inherit;
+      
+      overflow: visible;
+      vertical-align: -0.125em;
+      width: 2em;
+    }
+  }
+
+  .lol {
+    opacity: 0.1;
+    padding: 0 12px;
+    svg {
+      transform: rotate(-12deg);
+      display: inline-block;
+      font-size: inherit;
+      
+      overflow: visible;
+      vertical-align: -0.125em;
+      width: 2em;
+    }
+  }
+
+  .control {
+    display: flex;
+
+    &-item {
+      background: rgb(86, 96, 104);
+      padding: 6px 12px;
+      cursor: pointer;
+
+      border-left: 1px solid $header-color;
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &:active,
+      &.active {
+        background: rgb(28, 174, 216);
+      }
+
+      svg {
+        display: inline-block;
+        font-size: inherit;
+        height: 1em;
+        overflow: visible;
+        vertical-align: -0.125em;
+        width: 0.75em;
+      }
+    }
+  }
+
+  .time {
+    background: rgb(20, 22, 26);
+    border-radius: 3px;
+    padding: 3px 12px;
+    margin-right: 12px;
+
+    display: flex;
+    align-items: center;
+
+    &-current {
+      font-size: 120%;
+      margin-right: 12px;
+
+      .letter {
+        display: inline-block;
+        width: 12px;
+        text-align: center;
+      }
+    }
+
+    &-total {
+      &--title {
+        font-size: 60%;
+        opacity: 0.6;
+      }
+      &--value {
+        font-size: 80%;
+        .letter {
+          display: inline-block;
+          width: 8px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.speed {
+  justify-self: end;
+  display: flex;
+  align-items: flex-end;
+
+  > div:first-child {
+    margin-right: 6px;
+  }
+  &-range {
+    width: 180px;
+    padding: 8px;
+    position: relative;
+
+    &--dot {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &--title {
+      text-align: right;
+      font-size: 90%;
+      line-height: 1em;
+      opacity: 0.4;
+      padding-right: 6px;
+    }
+
+    &--value {
+      font-size: 130%;
+      line-height: 1em;
+      color: #fff;
+
+      .letter {
+        display: inline-block;
+        width: 13px;
+        text-align: center;
+      }
+    }
+
+    &--progress {
+      --value: 0;
+      border-radius: 3px;
+      width: 100%;
+      height: 3px;
+      background: rgb(150, 150, 151);
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        display: block;
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        width: var(--value);
+        height: 100%;
+        background: rgb(80, 137, 216);
+      }
+    }
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
